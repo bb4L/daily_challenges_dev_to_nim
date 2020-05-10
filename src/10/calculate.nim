@@ -31,5 +31,4 @@ proc calculate*(data:string):float =
         if lookup_idx < len(search_values)-1:
             inc(lookup_idx)
 
-    echo tokens
     result = parseFloat(tokens[0])
