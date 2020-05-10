@@ -1,6 +1,6 @@
 import  unittest, scrabble_count
 
-suite "test for vowels":
+suite "test for scrabble":
   test "simple":
     check(scrabble_count("A")==1)
     check(scrabble_count("A(d)")==2)
