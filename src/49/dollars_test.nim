@@ -12,3 +12,9 @@ suite "test dollars":
      
     test "120.21":
         check(dollars(120.21) == "$120.21")
+        
+    test "120.215":
+        check(dollars(120.215) == "$120.22")
+  
+    test "120.213":
+        check(dollars(120.213) == "$120.21")
