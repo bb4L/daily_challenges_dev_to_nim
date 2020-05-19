@@ -1,8 +1,8 @@
 const BILLS = @[500, 200, 100, 50, 20, 10]
 
-proc solve*(target:int):int=
+proc solve*(target: int): int =
     var amount_to_go = target
-    
+
     for bill in BILLS:
         if bill <= amount_to_go:
             let new_count = amount_to_go div bill
@@ -12,7 +12,7 @@ proc solve*(target:int):int=
             return result
 
     result = -1
-                
+
 
 when isMainModule:
     echo "10 needs:" & $(solve(10)) & "bills"

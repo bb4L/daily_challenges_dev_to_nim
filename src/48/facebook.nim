@@ -1,6 +1,6 @@
 import strutils, strformat
 
-proc facebook*(likes:seq[string]): string =
+proc facebook*(likes: seq[string]): string =
     let length = len(likes)
     case length:
         of 0:
@@ -8,7 +8,7 @@ proc facebook*(likes:seq[string]): string =
         of 1:
             return fmt"{likes[0]} likes this"
         of 2:
-            result = likes.join(" and ") 
+            result = likes.join(" and ")
         of 3:
             result = fmt"{likes[0]}, {likes[1]} and {likes[2]}"
         else:

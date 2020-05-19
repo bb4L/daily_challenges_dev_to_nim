@@ -1,8 +1,8 @@
 import strutils
 
-const vowels = ['a','e','i','o','u']
+const vowels = ['a', 'e', 'i', 'o', 'u']
 
-proc vowel_count*(data:string):int =
+proc vowel_count*(data: string): int =
     result = 0
     let d = data.toLowerAscii()
 

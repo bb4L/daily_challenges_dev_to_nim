@@ -3,10 +3,10 @@ import unittest, wordify
 suite "test wordify":
     test "1":
         check(wordify(1) == "one")
-    
+
     test "12":
         check(wordify(12) == "twelve")
-    
+
     test "17":
         check(wordify(17) == "seventeen")
 

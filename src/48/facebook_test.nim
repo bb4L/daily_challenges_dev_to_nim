@@ -9,7 +9,7 @@ suite "test facebook":
 
 
     test "Jacob, Alex":
-        check(facebook(@["Jacob","Alex"]) == "Jacob and Alex like this")
+        check(facebook(@["Jacob", "Alex"]) == "Jacob and Alex like this")
 
 
     test "Alex, Jacob, Mark, Max":

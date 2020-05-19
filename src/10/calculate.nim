@@ -1,14 +1,14 @@
 import strutils, system
 
 
-const search_values = @["*", "/", "-","+"]
+const search_values = @["*", "/", "-", "+"]
 
-proc calculate*(data:string):float =
+proc calculate*(data: string): float =
     var tokens = data.split(" ")
 
     var lookup_idx = 0
 
-    while len(tokens)>1:
+    while len(tokens) > 1:
         var idx = tokens.find(search_values[lookup_idx])
         while idx > 0:
             var value = 0.0

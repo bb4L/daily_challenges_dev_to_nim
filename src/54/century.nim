@@ -1,4 +1,4 @@
-proc century*(century:int):string =
+proc century*(century: int): string =
     let c = century div 100 + 1
     result.add($(c))
     case c mod 100:

@@ -1,12 +1,12 @@
 import os, strutils
 
-proc run_test(name:string) =
+proc run_test(name: string) =
     var code = execShellCmd("nim c -r " & name)
     echo "result code: " & $(code)
 
 
 when isMainModule:
-    if paramCount()!=1:
+    if paramCount() != 1:
         echo "Not correct input, need one number"
         quit(0)
 

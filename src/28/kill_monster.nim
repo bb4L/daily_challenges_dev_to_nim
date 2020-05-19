@@ -1,6 +1,7 @@
 import math, strformat
 
-proc kill_monster*(health:int, number_of_monster:int, monster_dmg:int): string = 
+proc kill_monster*(health: int, number_of_monster: int,
+        monster_dmg: int): string =
     let rounds = (number_of_monster-1) div 3
     let total_dmg = monster_dmg * rounds
     if total_dmg > health:

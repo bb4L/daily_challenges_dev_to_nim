@@ -1,6 +1,6 @@
 import algorithm
 
-proc dbl_linear*(u:int):int=
+proc dbl_linear*(u: int): int =
     var seq_result = @[1]
 
     for i in 0..<u:
@@ -11,7 +11,6 @@ proc dbl_linear*(u:int):int=
             seq_result.add(y)
         if not (z in seq_result):
             seq_result.add(z)
-    
+
     seq_result.sort()
     return seq_result[u]
-    

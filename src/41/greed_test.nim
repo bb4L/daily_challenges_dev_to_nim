@@ -6,6 +6,6 @@ suite "test greed":
 
     test "1 1 1 3 1":
         check(greed(@[1, 1, 1, 3, 1]) == 1100)
-    
+
     test "2 4 4 5 4 ":
-        check(greed(@[2, 4, 4, 5, 4 ]) == 450)
+        check(greed(@[2, 4, 4, 5, 4]) == 450)

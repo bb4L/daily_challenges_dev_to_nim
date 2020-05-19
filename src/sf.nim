@@ -1,7 +1,7 @@
 import os, strutils, terminal, strformat
 
 
-proc check_params():bool =
+proc check_params(): bool =
     if paramCount() != 2:
         return false
     try:
@@ -21,9 +21,10 @@ proc NAME*() =
     echo "implement"
 """
 
-proc create_files(count:string, file_name:string) =
+proc create_files(count: string, file_name: string) =
     createDir(count)
-    writeFile(joinPath(count, file_name & "_test.nim"), test_text.replace("NAME", file_name))
+    writeFile(joinPath(count, file_name & "_test.nim"), test_text.replace(
+            "NAME", file_name))
     writeFile(joinPath(count, file_name & ".nim"), normal_text.replace("NAME", file_name))
 
 

@@ -1,19 +1,19 @@
 import math, strutils, algorithm
 
-proc diamond*(size:int):string=
-    if floorMod(size,2)==0 or size<1:
+proc diamond*(size: int): string =
+    if floorMod(size, 2) == 0 or size < 1:
         result = ""
-    
-    elif size==1:
+
+    elif size == 1:
         result = "*"
 
     else:
         var lines = newSeq[string]()
-        for k in countup(1,size,2):
+        for k in countup(1, size, 2):
             let surround = " ".repeat(int((size-k)/2))
             let act_line = surround & "*".repeat(k) & surround
             lines.add(act_line)
-        
+
         var l = lines[0..len(lines)-2]
         l.reverse()
         result = lines.join("\n") & "\n" & l.join("\n")

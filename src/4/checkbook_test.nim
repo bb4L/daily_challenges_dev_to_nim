@@ -1,8 +1,8 @@
-import  unittest, strutils
+import unittest, strutils
 import checkbook
 
 suite "checkbook test":
-  
+
     test "example":
         let data = readFile("test_input.txt")
         let results = @[
@@ -16,5 +16,4 @@ suite "checkbook test":
             "Average expense 39.65"]
         let res = results.join("\n")
 
-        check(checkbook(data)==res)
-        
+        check(checkbook(data) == res)

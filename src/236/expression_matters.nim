@@ -1,6 +1,6 @@
 import sequtils
 
-proc expression_matters*(input_numbers:seq[int]):int =
+proc expression_matters*(input_numbers: seq[int]): int =
     if input_numbers.contains(1):
         if input_numbers[0] > input_numbers[2]:
             result = (input_numbers[1]+input_numbers[2]) * input_numbers[0]

@@ -1,4 +1,4 @@
-proc shortest_path*(data:int):int = 
+proc shortest_path*(data: int): int =
     var n = data
     while n > 1:
         if n mod 2 == 0:

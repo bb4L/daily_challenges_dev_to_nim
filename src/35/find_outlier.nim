@@ -1,4 +1,4 @@
-proc find_outlier*(data:seq[int]):int = 
+proc find_outlier*(data: seq[int]): int =
     var first_val = data[0] mod 2
     var second_val = data[1] mod 2
     if first_val != second_val:
