@@ -1,7 +1,7 @@
 import os, strutils
 
 proc run_test(name: string) =
-    var code = execShellCmd("nim c -r " & name)
+    var code = execShellCmd("nim c -r --hints:off " & name)
     echo "result code: " & $(code)
 
 
@@ -11,5 +11,7 @@ when isMainModule:
         quit(0)
 
     for kind, path in walkdir(paramStr(1)):
-        if path.endsWith("_test.nim"):
-            run_test(path)
+        if path.endsWith(".nim"):
+            discard execShellCmd("/nim/bin/nimpretty " & path)
+            if path.endsWith("_test.nim"):
+                run_test(path)
