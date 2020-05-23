@@ -1,10 +1,3 @@
-import sequtils
-
-type
-    ATM = tuple
-        value: int
-        pos: int
-
 proc maximumThrill*(atms: seq[int]): int =
     result = 0
     let size = len(atms)
