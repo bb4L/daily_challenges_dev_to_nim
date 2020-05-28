@@ -9,3 +9,9 @@ suite "test lastDigit":
 
     test "3":
         check(lastDigit(9, 7) == 9)
+
+    test "4":
+        check(lastDigit(0, 0) == 1)
+
+    test "5":
+        check(lastDigit(20, 0) == 1)
