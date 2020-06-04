@@ -8,7 +8,7 @@ suite "test century":
     test "2000":
         check(century(2000) == "21st")
     test "1999":
-        check(century(2000) == "20st")
+        check(century(1999) == "20th")
     test "2011":
         check(century(2011) == "21st")
     test "2154":

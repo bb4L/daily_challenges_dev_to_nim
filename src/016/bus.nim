@@ -5,5 +5,5 @@ type
         leaving: int
         entering: int
 
-proc get_people_in_bus*(data: seq[BusStop]): int =
+proc getPeopleInBus*(data: seq[BusStop]): int =
     result = data.foldl(a - b.leaving + b.entering, 0)

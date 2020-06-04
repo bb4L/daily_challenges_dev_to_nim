@@ -1,7 +1,7 @@
 import re, strutils
 
-proc money_value*(data_orig: string): float =
-    let data = data_orig.replace("$", " ")
+proc moneyValue*(dataOrig: string): float =
+    let data = dataOrig.replace("$", " ")
     let a = data.findBounds(re"[-]?[' ']*\d+[.]?\d*")
     let b = data.findBounds(re"[-]?[' ']*\d*[.]\d+")
     result = 0.0

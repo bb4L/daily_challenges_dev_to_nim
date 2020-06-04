@@ -2,26 +2,26 @@ import sequtils, tables, strutils
 
 # Levenshtein might have been a better comparison of the words.... https://en.wikipedia.org/wiki/Levenshtein_distance
 
-proc most_similar*(language: seq[string], search_term: string): string =
-    let lookup_tables = language.map(proc(x: string): CountTable[
+proc mostSimilar*(language: seq[string], searchTerm: string): string =
+    let lookupTables = language.map(proc(x: string): CountTable[
             char] = toCountTable(x.toLower()))
-    let search_lookup = toCountTable(search_term.toLower())
+    let searchLookup = toCountTable(searchTerm.toLower())
 
-    var min_diff = 10*len(search_lookup)
+    var minDiff = 10*len(searchLookup)
     var idx = 0
 
-    for i in 0 .. len(lookup_tables)-1:
-        var search_val = search_lookup
-        var curr_diff = 0
-        for k, v in lookup_tables[i].pairs:
-            curr_diff += abs(v - search_val.getOrDefault(k, 0))
-            search_val.del(k)
+    for i in 0 .. len(lookupTables)-1:
+        var searchVal = searchLookup
+        var currDiff = 0
+        for k, v in lookupTables[i].pairs:
+            currDiff += abs(v - searchVal.getOrDefault(k, 0))
+            searchVal.del(k)
 
-        for v in search_val.values:
-            curr_diff += v
+        for v in searchVal.values:
+            currDiff += v
 
-        if curr_diff < min_diff:
+        if currDiff < minDiff:
             idx = i
-            min_diff = curr_diff
+            minDiff = currDiff
 
     result = language[idx]

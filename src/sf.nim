@@ -1,7 +1,7 @@
 import os, strutils, terminal, strformat
 
 
-proc check_params(): bool =
+proc checkParams(): bool =
     if paramCount() != 2:
         return false
     try:
@@ -10,30 +10,30 @@ proc check_params(): bool =
         return false
     return true
 
-const test_text = """import unittest, NAME
+const testText = """import unittest, NAME
 
 suite "test NAME":
     test "1":
         check(NAME() == true)
 """
-const normal_text = """
+const normalText = """
 proc NAME*() =
     echo "implement"
 """
 
-proc create_files(count: string, file_name: string) =
+proc createFiles(count: string, fileName: string) =
     createDir(count)
-    writeFile(joinPath(count, file_name & "_test.nim"), test_text.replace(
-            "NAME", file_name))
-    writeFile(joinPath(count, file_name & ".nim"), normal_text.replace("NAME", file_name))
+    writeFile(joinPath(count, fileName & "_test.nim"), testText.replace(
+            "NAME", fileName))
+    writeFile(joinPath(count, fileName & ".nim"), normalText.replace("NAME", fileName))
 
 
 when isMainModule:
     echo "starting... "
-    if not check_params():
+    if not checkParams():
         styledEcho fgRed, "Wrong number of arguments or wrong type, expected one number and a string"
         quit(0)
 
-    create_files(paramStr(1), paramStr(2))
+    createFiles(paramStr(1), paramStr(2))
 
     echo fmt"done for {paramstr(1)} , {paramStr(2)}"

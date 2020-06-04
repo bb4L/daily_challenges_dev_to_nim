@@ -1,14 +1,14 @@
 const BILLS = @[500, 200, 100, 50, 20, 10]
 
 proc solve*(target: int): int =
-    var amount_to_go = target
+    var amountToGo = target
 
     for bill in BILLS:
-        if bill <= amount_to_go:
-            let new_count = amount_to_go div bill
-            amount_to_go -= new_count*bill
-            result += new_count
-        if amount_to_go == 0:
+        if bill <= amountToGo:
+            let newCount = amountToGo div bill
+            amountToGo -= newCount*bill
+            result += newCount
+        if amountToGo == 0:
             return result
 
     result = -1

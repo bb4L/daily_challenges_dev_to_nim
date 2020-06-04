@@ -1,12 +1,12 @@
-proc movie*(card: int, normal_price: int, perc: float): int =
-    var cheapest = perc * normal_price.toFloat()
-    var diff = card.toFloat() + perc * normal_price.toFloat() -
-            normal_price.toFloat()
+proc movie*(card: int, normalPrice: int, perc: float): int =
+    var cheapest = perc * normalPrice.toFloat()
+    var diff = card.toFloat() + perc * normalPrice.toFloat() -
+            normalPrice.toFloat()
 
     var k = 1
     while diff > 0:
         cheapest *= perc
-        diff += (-normal_price.toFloat() + cheapest)
+        diff += (-normalPrice.toFloat() + cheapest)
         inc(k)
 
     result = k

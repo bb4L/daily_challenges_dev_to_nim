@@ -13,15 +13,15 @@ const MorseToChar = {".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E",
         ".--": "W", "-..-": "X", "-.--": "Y", "--..": "Z"}.toTable
 
 proc toMorse*(data: string): string =
-    var cleaned_data = data
-    cleaned_data.removeSuffix(" ")
-    cleaned_data.removePrefix(" ")
-    result = cleaned_data.map(proc(x: char): string = CharToMorse.getOrDefault(
+    var cleanedData = data
+    cleanedData.removeSuffix(" ")
+    cleanedData.removePrefix(" ")
+    result = cleanedData.map(proc(x: char): string = CharToMorse.getOrDefault(
             $(x), "?")).join(" ")
 
 proc toChar*(data: string): string =
-    var cleaned_data = data
-    cleaned_data.removeSuffix(" ")
-    cleaned_data.removePrefix(" ")
-    result = cleaned_data.split(" ").map(proc(
+    var cleanedData = data
+    cleanedData.removeSuffix(" ")
+    cleanedData.removePrefix(" ")
+    result = cleanedData.split(" ").map(proc(
             x: string): string = MorseToChar.getOrDefault(x, "?")).join("")

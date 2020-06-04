@@ -1,14 +1,14 @@
 import sequtils
 
-proc expression_matters*(input_numbers: seq[int]): int =
-    if input_numbers.contains(1):
-        if input_numbers[0] > input_numbers[2]:
-            result = (input_numbers[1]+input_numbers[2]) * input_numbers[0]
-        elif input_numbers[0] < input_numbers[2]:
-            result = (input_numbers[1] + input_numbers[0]) * input_numbers[2]
-        elif input_numbers[0] == input_numbers[1]:
-            result = input_numbers.foldl(a+b)
+proc expressionMatters*(inputNumbers: seq[int]): int =
+    if inputNumbers.contains(1):
+        if inputNumbers[0] > inputNumbers[2]:
+            result = (inputNumbers[1]+inputNumbers[2]) * inputNumbers[0]
+        elif inputNumbers[0] < inputNumbers[2]:
+            result = (inputNumbers[1] + inputNumbers[0]) * inputNumbers[2]
+        elif inputNumbers[0] == inputNumbers[1]:
+            result = inputNumbers.foldl(a+b)
         else:
-            result = (input_numbers[1] + input_numbers[0]) * input_numbers[2]
+            result = (inputNumbers[1] + inputNumbers[0]) * inputNumbers[2]
     else:
-        result = input_numbers.foldl(a*b)
+        result = inputNumbers.foldl(a*b)

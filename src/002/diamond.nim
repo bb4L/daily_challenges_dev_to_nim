@@ -11,8 +11,8 @@ proc diamond*(size: int): string =
         var lines = newSeq[string]()
         for k in countup(1, size, 2):
             let surround = " ".repeat(int((size-k)/2))
-            let act_line = surround & "*".repeat(k) & surround
-            lines.add(act_line)
+            let actLine = surround & "*".repeat(k) & surround
+            lines.add(actLine)
 
         var l = lines[0..len(lines)-2]
         l.reverse()

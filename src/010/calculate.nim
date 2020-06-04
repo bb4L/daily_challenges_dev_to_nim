@@ -1,34 +1,34 @@
 import strutils, system
 
 
-const search_values = @["*", "/", "-", "+"]
+const searchValues = @["*", "/", "-", "+"]
 
 proc calculate*(data: string): float =
     var tokens = data.split(" ")
 
-    var lookup_idx = 0
+    var lookupIdx = 0
 
     while len(tokens) > 1:
-        var idx = tokens.find(search_values[lookup_idx])
+        var idx = tokens.find(searchValues[lookupIdx])
         while idx > 0:
             var value = 0.0
 
-            if lookup_idx == 0:
+            if lookupIdx == 0:
                 value = parseFloat(tokens[idx-1]) * parseFloat(tokens[idx+1])
-            elif lookup_idx == 1:
+            elif lookupIdx == 1:
                 value = parseFloat(tokens[idx-1]) / parseFloat(tokens[idx+1])
-            elif lookup_idx == 2:
+            elif lookupIdx == 2:
                 value = parseFloat(tokens[idx-1]) - parseFloat(tokens[idx+1])
-            elif lookup_idx == 3:
+            elif lookupIdx == 3:
                 value = parseFloat(tokens[idx-1]) + parseFloat(tokens[idx+1])
 
             tokens[idx-1] = $(value)
             tokens.del(idx+1)
             tokens.del(idx)
 
-            idx = tokens.find(search_values[lookup_idx])
+            idx = tokens.find(searchValues[lookupIdx])
 
-        if lookup_idx < len(search_values)-1:
-            inc(lookup_idx)
+        if lookupIdx < len(searchValues)-1:
+            inc(lookupIdx)
 
     result = parseFloat(tokens[0])

@@ -1,6 +1,6 @@
 import math
 
-proc number_check*(data: int): seq[bool] =
+proc numberCheck*(data: int): seq[bool] =
     result = @[false, false, false]
 
     if data mod 10 == 0:

@@ -1,17 +1,15 @@
 import os, strutils
 
-proc find_files(search_path: string, pattern: string): seq[string] =
-    for (kind, path) in walkdir(search_path):
+proc findFiles(searchPath: string, pattern: string): seq[string] =
+    for (kind, path) in walkdir(searchPath):
         if kind == pcDir:
-            result.add(find_files(path, pattern))
+            result.add(findFiles(path, pattern))
         elif path.endsWith(pattern):
             result.add(path)
 
 when isMainModule:
     echo "starting... "
 
-    let files = find_files(".", ".nim")
+    let files = findFiles(".", ".nim")
     for f in files:
-        # echo "file"
-        # echo f
         discard execShellCmd("/nim/bin/nimpretty " & f)

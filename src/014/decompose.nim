@@ -1,40 +1,40 @@
 import math, algorithm
 
 
-proc find_seq(remainder: int, existing: seq[int]): seq[int] =
-    var old_result = existing
-    var next_try = min(existing)-1
+proc findSeq(remainder: int, existing: seq[int]): seq[int] =
+    var oldResult = existing
+    var nextTry = min(existing)-1
 
     result = @[]
-    if next_try < 1:
+    if nextTry < 1:
         return @[]
 
     while len(result) == 0:
-        if remainder >= next_try*next_try:
-            old_result.add(next_try)
-            let new_remainder = remainder - (next_try*next_try)
+        if remainder >= nextTry*nextTry:
+            oldResult.add(nextTry)
+            let newRemainder = remainder - (nextTry*nextTry)
 
-            if new_remainder > 0:
-                result = find_seq(new_remainder, old_result)
+            if newRemainder > 0:
+                result = findSeq(newRemainder, oldResult)
             else:
-                result = old_result
+                result = oldResult
 
             if len(result) == 0:
-                old_result.del(len(old_result)-1)
+                oldResult.del(len(oldResult)-1)
             else:
                 break
-        dec(next_try)
-        if next_try < 1:
+        dec(nextTry)
+        if nextTry < 1:
             break
 
 proc decompose*(square: int): seq[int] =
     result = newSeq[int]()
 
     let goal = pow(toFloat(square), 2)
-    var start_value = square-1
+    var startValue = square-1
 
-    while len(result) == 0 and start_value > 2:
-        result = find_seq(toInt(goal - pow(toFloat(start_value), 2)), @[start_value])
-        dec(start_value)
+    while len(result) == 0 and startValue > 2:
+        result = findSeq(toInt(goal - pow(toFloat(startValue), 2)), @[startValue])
+        dec(startValue)
 
     result.sort()

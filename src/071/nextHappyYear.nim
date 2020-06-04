@@ -1,18 +1,18 @@
 import sequtils, tables
 
-proc nextHappyYear*(actual_year: int): int =
-    var next_year = actual_year + 1
-    var digits = @[next_year div 1000, next_year div 100 mod 10,
-            next_year div 10 mod 10, next_year mod 10]
+proc nextHappyYear*(actualYear: int): int =
+    var nextYear = actualYear + 1
+    var digits = @[nextYear div 1000, nextYear div 100 mod 10,
+            nextYear div 10 mod 10, nextYear mod 10]
 
-    var start_point = actual_year mod 100
+    var startPoint = actualYear mod 100
 
     if len(digits.toCountTable()) != 4:
         if digits[0] == digits[1]:
             digits[1]+=1
-            start_point = 0
+            startPoint = 0
 
-        for i in start_point .. 99:
+        for i in startPoint .. 99:
             if (not digits[0..1].contains(i div 10)) and (not digits[
                     0..1].contains(i mod 10)):
                 digits[2] = i div 10

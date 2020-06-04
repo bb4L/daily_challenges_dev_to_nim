@@ -1,14 +1,14 @@
 import math
 
-proc gracefulTipping*(rest_bill: float): float =
-    result = ceil(rest_bill*1.15)
+proc gracefulTipping*(restBill: float): float =
+    result = ceil(restBill*1.15)
 
     if result < 10:
         return result
 
     let exp = floor(log10(result))-1
 
-    let mod_op = 5 * pow(10.0, exp)
+    let modOp = 5 * pow(10.0, exp)
 
-    if floorMod(result, mod_op) > 0:
-        result += (mod_op - floorMod(result, mod_op))
+    if floorMod(result, modOp) > 0:
+        result += (modOp - floorMod(result, modOp))

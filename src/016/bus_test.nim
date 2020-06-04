@@ -2,4 +2,4 @@ import unittest, bus
 
 suite "test bus":
     test "1":
-        check(get_people_in_bus(@[(0, 1), (0, 6), (1, 5)]) == 11)
+        check(getPeopleInBus(@[(0, 1), (0, 6), (1, 5)]) == 11)

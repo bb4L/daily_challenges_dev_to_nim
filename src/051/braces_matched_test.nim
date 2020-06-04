@@ -1,14 +1,14 @@
 import unittest, braces_matched
 
-suite "test braces_matched":
+suite "test bracesMatched":
     test "{{{}{}}}":
-        check(braces_matched("{{{}{}}}") == true)
+        check(bracesMatched("{{{}{}}}") == true)
 
     test "{{":
-        check(braces_matched("{{") == false)
+        check(bracesMatched("{{") == false)
 
     test "{}}":
-        check(braces_matched("{}}") == false)
+        check(bracesMatched("{}}") == false)
 
     test "":
-        check(braces_matched("") == true)
+        check(bracesMatched("") == true)

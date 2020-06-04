@@ -3,10 +3,10 @@ import tables
 const COINS = @[25, 10, 5]
 
 proc change*(value: int): OrderedTable[int, int] =
-    var change_left = value
+    var changeLeft = value
     for c in COINS:
-        let val = change_left div c
+        let val = changeLeft div c
         result.add(c, val)
-        change_left -= val * c
+        changeLeft -= val * c
 
-    result.add(1, change_left)
+    result.add(1, changeLeft)

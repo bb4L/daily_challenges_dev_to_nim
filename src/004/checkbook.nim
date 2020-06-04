@@ -1,42 +1,42 @@
 import strutils, strformat
 
-var incorrect_chars = AllChars - Letters - Digits - Whitespace
-incorrect_chars.excl('.')
+var incorrectChars = AllChars - Letters - Digits - Whitespace
+incorrectChars.excl('.')
 
 
 proc checkbook*(data: string): string =
-    var result_data = newSeq[string]()
+    var resultData = newSeq[string]()
 
     let mylines = data.splitLines()
-    let init_balance = parseFloat(mylines[0].split(incorrect_chars).join())
-    var balance = init_balance
+    let initBalance = parseFloat(mylines[0].split(incorrectChars).join())
+    var balance = initBalance
 
     let bal = fmt("{balance:9.2f}").strip().strip(trailing = true)
 
-    result_data.add(fmt("Original_Balance: {bal}"))
-    var exp_count = 0
+    resultData.add(fmt("Original_Balance: {bal}"))
+    var expCount = 0
 
     for line in mylines[1 .. len(mylines)-1]:
-        inc(exp_count)
+        inc(expCount)
 
-        let cleaned_line = line.split(incorrect_chars).join().split(" ")
-        let expence = parseFloat(cleaned_line[2])
+        let cleanedLine = line.split(incorrectChars).join().split(" ")
+        let expence = parseFloat(cleanedLine[2])
 
         balance = balance - expence
 
         let val = fmt("{balance:9.2f}").strip().strip(trailing = true)
 
-        result_data.add(cleaned_line[0..1].join(" ") & " " & fmt(
+        resultData.add(cleanedLine[0..1].join(" ") & " " & fmt(
                 "{expence:9.2f}").strip().strip(trailing = true) & " Balance " &
                 $(val))
 
-    result_data.add("Total expense " & fmt(
-            "{(init_balance-balance):9.2f}").strip().strip(trailing = true))
-    result_data.add("Average expense " & fmt(
-            "{(init_balance-balance)/toFloat(exp_count):9.2f}").strip().strip(
+    resultData.add("Total expense " & fmt(
+            "{(initBalance-balance):9.2f}").strip().strip(trailing = true))
+    resultData.add("Average expense " & fmt(
+            "{(initBalance-balance)/toFloat(expCount):9.2f}").strip().strip(
             trailing = true))
 
-    result = result_data.join("\n")
+    result = resultData.join("\n")
 
 
 when isMainModule:

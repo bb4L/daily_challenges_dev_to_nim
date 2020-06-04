@@ -1,22 +1,22 @@
 proc checkDocuments*(filename1: string, filename2: string): bool =
-    var lines_from2 = newSeq[string]()
+    var linesFrom2 = newSeq[string]()
     for line in lines filename2:
-        lines_from2.add(line.string)
+        linesFrom2.add(line.string)
 
     var idx = 0
     for line in lines filename1:
-        if idx > len(lines_from2) or len(line) != len(lines_from2[idx]):
+        if idx > len(linesFrom2) or len(line) != len(linesFrom2[idx]):
             return false
 
-        var c_count = 0
+        var cCount = 0
         for c in line:
-            if c != 'X' and c != lines_from2[idx][c_count]:
+            if c != 'X' and c != linesFrom2[idx][cCount]:
                 return false
-            inc(c_count)
+            inc(cCount)
 
         inc(idx)
 
-    if len(lines_from2) != idx:
+    if len(linesFrom2) != idx:
         return false
 
     result = true

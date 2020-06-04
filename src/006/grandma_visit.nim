@@ -28,14 +28,14 @@ proc getWay(): float =
     # improve to hand over the sequence of friends to visit
     result = getDistance("home", grannyFriends[0][1])
 
-    var old_place = grannyFriends[0][1]
-    var new_place = grannyFriends[0][1]
+    var oldPlace = grannyFriends[0][1]
+    var newPlace = grannyFriends[0][1]
     for friend in grannyFriends[1..len(grannyFriends)-1]:
-        new_place = friend[1]
-        result += getDistance(old_place, new_place)
-        old_place = new_place
+        newPlace = friend[1]
+        result += getDistance(oldPlace, newPlace)
+        oldPlace = newPlace
 
-    result += distances[new_place]
+    result += distances[newPlace]
 
 when isMainModule:
     echo "result"

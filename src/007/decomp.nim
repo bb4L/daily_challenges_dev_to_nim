@@ -5,21 +5,21 @@ proc decomp*(val: int): string =
 
     for number in countup(2, val):
         var remainder = 0
-        var val_to_test = number
+        var valToTest = number
         for p in countup(2, number):
-            remainder = floorMod(val_to_test, p)
+            remainder = floorMod(valToTest, p)
             if remainder == 0:
-                while remainder == 0 and val_to_test > 1:
+                while remainder == 0 and valToTest > 1:
                     results[p] = results.getOrDefault(p, 0) + 1
-                    val_to_test = val_to_test div p
-                    remainder = floorMod(val_to_test, p)
+                    valToTest = valToTest div p
+                    remainder = floorMod(valToTest, p)
 
-    var res_data = newSeq[string]()
+    var resData = newSeq[string]()
 
     for k, v in results.pairs:
         if v > 1:
-            res_data.add($(k) & "^" & $(v))
+            resData.add($(k) & "^" & $(v))
         else:
-            res_data.add($(k))
+            resData.add($(k))
 
-    result = res_data.join(" * ")
+    result = resData.join(" * ")

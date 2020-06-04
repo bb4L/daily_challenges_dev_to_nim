@@ -4,7 +4,7 @@ import math, sequtils
 # https://en.wikipedia.org/wiki/Euler%27s_totient_function#Computing_Euler's_totient_function
 # https://www.geeksforgeeks.org/print-all-prime-factors-of-a-given-number/
 
-proc get_prime_factors(val: int): seq[float] =
+proc getPrimeFactors(val: int): seq[float] =
     var n = val
     if n mod 2 == 0:
         result.add(2)
@@ -23,8 +23,8 @@ proc get_prime_factors(val: int): seq[float] =
         result.add(n.toFloat())
 
 
-proc proper_fractions*(n: int): int =
-    let primefactors = get_prime_factors(n)
+proc properFractions*(n: int): int =
+    let primefactors = getPrimeFactors(n)
 
     if len(primefactors) > 0:
         result = (n.toFloat() * primefactors.map(proc(x: float): float = (1 - (

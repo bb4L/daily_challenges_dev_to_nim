@@ -2,6 +2,6 @@ import unittest, shortest_path
 
 suite "test shortest path":
     test "3":
-        check(shortest_path(3) == 2)
+        check(shortestPath(3) == 2)
     test "12":
-        check(shortest_path(12) == 4)
+        check(shortestPath(12) == 4)

@@ -1,7 +1,7 @@
 import strutils, math, strformat
 
 proc runningPace*(distance: float, time: string): string =
-    let time_str = time.split(":")
-    let time_seconds = 60*parseInt(time_str[0]) + parseInt(time_str[1])
-    let seconds_per_km = floor(time_seconds.toFloat() / distance).toInt()
-    return fmt"{seconds_per_km div 60:02}:{seconds_per_km mod 60:02}"
+    let timeStr = time.split(":")
+    let timeSeconds = 60*parseInt(timeStr[0]) + parseInt(timeStr[1])
+    let secondsPerKm = floor(timeSeconds.toFloat() / distance).toInt()
+    return fmt"{secondsPerKm div 60:02}:{secondsPerKm mod 60:02}"

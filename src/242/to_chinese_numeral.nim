@@ -5,7 +5,7 @@ const TENS = @["十", "百", "千", "万"]
 const POINT = "点"
 const NEGATIVE = "负"
 
-proc to_chinese_numeral*(number: int): string =
+proc toChineseNumeral*(number: int): string =
     var n = abs(number)
 
     if n in 10 .. 19:
@@ -20,28 +20,28 @@ proc to_chinese_numeral*(number: int): string =
         if number < 0:
             result.add(NEGATIVE)
 
-        var act_value = 0
-        var act_multiplier = 0
+        var actValue = 0
+        var actMultiplier = 0
 
         for i in countdown(4, 2, 1):
-            act_multiplier = pow(10.0, i.toFloat()).toInt()
+            actMultiplier = pow(10.0, i.toFloat()).toInt()
 
-            if n div act_multiplier >= 0:
-                act_value = n div act_multiplier
-                n -= act_multiplier * act_value
+            if n div actMultiplier >= 0:
+                actValue = n div actMultiplier
+                n -= actMultiplier * actValue
 
-                if act_value > 0:
-                    result.add(DIGITS[act_value])
+                if actValue > 0:
+                    result.add(DIGITS[actValue])
                     result.add(TENS[i-1])
                 elif n > 0 and len(result) > 0 and result != DIGITS[0]:
                     result.add(DIGITS[0])
 
         if n div 10 > 0:
-            act_value = n div 10
-            n -= 10 * act_value
+            actValue = n div 10
+            n -= 10 * actValue
 
-            if act_value > 0:
-                result.add(DIGITS[act_value])
+            if actValue > 0:
+                result.add(DIGITS[actValue])
                 result.add(TENS[0])
 
             elif n > 0:

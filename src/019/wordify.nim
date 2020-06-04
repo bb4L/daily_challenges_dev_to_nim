@@ -11,16 +11,16 @@ const sizes = ["", "", "", "hundred", "thousand", "million", "billion",
 
 proc wordify*(data: int): string =
     var acc = newSeq[string]()
-    var str_data = $(data)
-    var len_to_go = len(str_data)
+    var strData = $(data)
+    var lenToGo = len(strData)
 
-    while len_to_go > 0:
-        if len_to_go <= 2:
-            if len_to_go == 1:
-                acc.add(singulars[parseInt($(str_data[0]))])
+    while lenToGo > 0:
+        if lenToGo <= 2:
+            if lenToGo == 1:
+                acc.add(singulars[parseInt($(strData[0]))])
                 break
-            let tens = parseInt($(str_data[0]))
-            let singular = parseInt($(str_data[1]))
+            let tens = parseInt($(strData[0]))
+            let singular = parseInt($(strData[1]))
             if tens >= 1:
                 if tens == 1:
                     if singular != 0:
@@ -32,12 +32,12 @@ proc wordify*(data: int): string =
                 acc.add(singulars[singular])
             break
         else:
-            let val = parseInt($(str_data[0]))
+            let val = parseInt($(strData[0]))
             if val > 0:
                 acc.add(singulars[parseInt($(val))])
-                acc.add(sizes[len_to_go])
-        str_data = str_data.substr(1)
-        len_to_go = len(str_data)
+                acc.add(sizes[lenToGo])
+        strData = strData.substr(1)
+        lenToGo = len(strData)
 
     result = acc.join(" ")
     result.removeSuffix(' ')

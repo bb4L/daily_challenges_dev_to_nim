@@ -2,7 +2,7 @@ import times
 
 proc count*(birthdate: DateTime, today: DateTime): string =
     let startWorking = birthdate + 22.years
-    let firstMonday = start_working + ((7 - ord(startWorking.weekday) - ord(
+    let firstMonday = startWorking + ((7 - ord(startWorking.weekday) - ord(
             dMon)) mod 7).days
 
     let retirement = birthdate + 78.years - 1.days

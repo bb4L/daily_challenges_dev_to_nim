@@ -1,5 +1,5 @@
 import strutils
 
 proc xo*(data: string): bool =
-    let lower_data = data.toLower()
-    lower_data.count('x') == lower_data.count('o')
+    let lowerData = data.toLower()
+    lowerData.count('x') == lowerData.count('o')

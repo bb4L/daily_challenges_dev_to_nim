@@ -6,89 +6,89 @@ type
         results*: seq[string]
 
     Stats = ref object of Result
-        max_height*: int
-        total_missed*: int
+        maxHeight*: int
+        totalMissed*: int
         tied*: bool
 
 proc jumps*(results: seq[Result]): seq[string] =
 
     let statistics = results.map(proc(x: Result): Stats =
-        var m_height = 0
-        let total_len = x.results.len()
+        var mHeight = 0
+        let totalLen = x.results.len()
         for k in 1 .. x.results.len():
-            let i = total_len - k
+            let i = totalLen - k
 
             if x.results[i].contains('O'):
-                m_height = i
+                mHeight = i
                 break
 
-        Stats(name: x.name, results: x.results, max_height: m_height,
-                total_missed: x.results.join("").count('X'), tied: false)
+        Stats(name: x.name, results: x.results, maxHeight: mHeight,
+                totalMissed: x.results.join("").count('X'), tied: false)
 
     ).sorted(proc(x, y: Stats): int =
-        if x.max_height != y.max_height:
-            cmp(y.max_height, x.max_height)
+        if x.maxHeight != y.maxHeight:
+            cmp(y.maxHeight, x.maxHeight)
         else:
-            if x.results[x.max_height].len() != y.results[y.max_height].len():
-                cmp(x.results[x.max_height].len(), y.results[y.max_height].len())
+            if x.results[x.maxHeight].len() != y.results[y.maxHeight].len():
+                cmp(x.results[x.maxHeight].len(), y.results[y.maxHeight].len())
             else:
-                if x.total_missed == y.total_missed:
+                if x.totalMissed == y.totalMissed:
                     x.tied = true
                     y.tied = true
                     cmp(x.name, y.name)
                 else:
-                    cmp(x.total_missed, y.total_missed)
+                    cmp(x.totalMissed, y.totalMissed)
     )
 
     var place = 0
-    var actual_tied = false
-    var same_place = 0
+    var actualTied = false
+    var samePlace = 0
     result = newSeq[string]()
-    var result_idx = 0
+    var resultIdx = 0
 
     for i, stats in statistics.pairs():
-        if len(result) <= result_idx:
+        if len(result) <= resultIdx:
             result.add($(place+1)&":")
-            result[result_idx].add(" " & stats.name)
+            result[resultIdx].add(" " & stats.name)
 
         if len(statistics) > i+1:
-            let next_stat = statistics[i+1]
+            let nextStat = statistics[i+1]
 
-            if stats.tied and next_stat.tied and next_stat.max_height ==
-                    stats.max_height and stats.results[stats.max_height].len(
+            if stats.tied and nextStat.tied and nextStat.maxHeight ==
+                    stats.maxHeight and stats.results[stats.maxHeight].len(
                 ) ==
-                next_stat.results[next_stat.max_height].len() and
-                stats.total_missed == next_stat.total_missed:
-                if actual_tied:
-                    result[result_idx].add(stats.name)
-                actual_tied = true
-                result[result_idx].add(", ")
-                inc(same_place)
+                nextStat.results[nextStat.maxHeight].len() and
+                stats.totalMissed == nextStat.totalMissed:
+                if actualTied:
+                    result[resultIdx].add(stats.name)
+                actualTied = true
+                result[resultIdx].add(", ")
+                inc(samePlace)
 
-            elif actual_tied:
-                actual_tied = false
-                result[result_idx].add(stats.name)
+            elif actualTied:
+                actualTied = false
+                result[resultIdx].add(stats.name)
                 if place == 0:
-                    result[result_idx].add(" (jump-off)")
+                    result[resultIdx].add(" (jump-off)")
                 else:
-                    result[result_idx].add(" (tie)")
+                    result[resultIdx].add(" (tie)")
 
-                place += same_place+1
-                inc(result_idx)
-                same_place = 0
+                place += samePlace+1
+                inc(resultIdx)
+                samePlace = 0
             else:
-                inc(result_idx)
+                inc(resultIdx)
                 inc(place)
         else:
 
-            if actual_tied:
-                result[result_idx].add(stats.name)
+            if actualTied:
+                result[resultIdx].add(stats.name)
 
                 if place == 0:
-                    result[result_idx].add(" (jump-off)")
+                    result[resultIdx].add(" (jump-off)")
                 else:
-                    result[result_idx].add(" (tie)")
-                place += same_place + 1
+                    result[resultIdx].add(" (tie)")
+                place += samePlace + 1
 
             break
 

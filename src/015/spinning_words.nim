@@ -1,13 +1,13 @@
 import strutils, algorithm, sequtils
 
-proc do_logic(x: string): string =
+proc doLogic(x: string): string =
     if len(x) >= 5:
         result = reversed(x).join("")
     else:
         result = x
 
-proc spinning_words*(in_data: string): string =
-    var my_data = in_data.split(" ")
-    my_data.apply(do_logic)
+proc spinningWords*(inData: string): string =
+    var myData = inData.split(" ")
+    myData.apply(doLogic)
 
-    result = my_data.join(" ")
+    result = myData.join(" ")

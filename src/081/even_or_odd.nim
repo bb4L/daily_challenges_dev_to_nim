@@ -1,21 +1,21 @@
 import strutils
 
-proc even_or_odd*(vals: string): string =
-    var even_sum = 0
-    var odd_sum = 0
+proc evenOrOdd*(vals: string): string =
+    var evenSum = 0
+    var oddSum = 0
 
     for c in vals:
         let n = ($(c)).parseInt()
         if n mod 2 == 0:
-            even_sum += n
+            evenSum += n
         else:
-            odd_sum += n
+            oddSum += n
 
-    let sum_even_odd = even_sum - odd_sum
+    let sumEvenOdd = evenSum - oddSum
 
-    if sum_even_odd > 0:
+    if sumEvenOdd > 0:
         result = "Even is greater than Odd"
-    elif sum_even_odd == 0:
+    elif sumEvenOdd == 0:
         result = "Even and Odd are the same"
     else:
         result = "Odd is greater than Even"
