@@ -6,7 +6,7 @@ proc runTest(name: string): int =
 proc handleFile(path:string): int =
     if path.endsWith(".nim"):
             discard execShellCmd("/nim/bin/nimpretty " & path)
-            if path.endsWith("_test.nim"):
+            if path.endsWith("_test.nim") or path.endsWith("Test.nim"):
                 return runTest(path)
             else:
                 return 0

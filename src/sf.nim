@@ -23,7 +23,7 @@ proc NAME*() =
 
 proc createFiles(count: string, fileName: string) =
     createDir(count)
-    writeFile(joinPath(count, fileName & "_test.nim"), testText.replace(
+    writeFile(joinPath(count, fileName & "Test.nim"), testText.replace(
             "NAME", fileName))
     writeFile(joinPath(count, fileName & ".nim"), normalText.replace("NAME", fileName))
 
