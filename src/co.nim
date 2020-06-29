@@ -14,6 +14,8 @@ when isMainModule:
             for c in s:
                 if not isDigit(c):
                     styledEcho fgRed, "Argument is not digits only"
+                    quit(0)
+
             
             discard execShellCmd("git add " & s)
             let res =  execShellCmd("git co -b feat/" & s)
