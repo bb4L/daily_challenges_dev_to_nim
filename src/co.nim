@@ -22,8 +22,4 @@ when isMainModule:
             if res == 0:
                 discard execShellCmd("git cim \"Add solution for " & s & "\"")
                 discard execShellCmd("git push -u origin feat/" & s)
-
-
-            # let k = parseInt(s)
-            # echo "K"
-            # echo k
+                discard execShellCmd("git co master")
